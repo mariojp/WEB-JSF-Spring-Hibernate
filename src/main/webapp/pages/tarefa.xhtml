@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Tarefas</title>
+</h:head>
+<h:body>
+	<h:form>
+		  <h:outputLabel for="name" value="Name : " />
+		  <table> 
+		     <tr>
+		     	<td><h:outputLabel for="titulo" value="Titulo : " /></td>
+		     	<td><p:inputText id="titulo" value="#{tarefaMB.titulo}">
+		     			<f:validateLength minimum="5" /> 
+		     		</p:inputText>
+		     	</td>
+		     </tr>
+		     <tr>
+		     	<td><h:outputLabel for="descricao" value="Descricao : " /></td>   
+		     	<td><p:inputTextarea id="surname" value="#{tarefaMB.descricao}"> 
+		     		</p:inputTextarea>
+		     	</td>    
+		     </tr>            
+	         <tr>
+		     	<td><p:commandButton id="addTarefa" value="Add" action="#{tarefaMB.addTarefa}" ajax="false"/></td>
+		     </tr>   
+	     </table>
+	    
+		<h:outputText value="Tarefas : "></h:outputText>
+		<p:dataTable id="tarefas" var="tarefa" value="#{tarefaMB.tarefaList}" style="width: 10%">
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="ID" />
+				</f:facet>
+				<h:outputText value="#{tarefa.id}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="TITULO" />
+				</f:facet>
+				<h:outputText value="#{tarefa.titulo}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Descricao" />
+				</f:facet>
+				<h:outputText value="#{tarefa.descricao}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+
+</html>
